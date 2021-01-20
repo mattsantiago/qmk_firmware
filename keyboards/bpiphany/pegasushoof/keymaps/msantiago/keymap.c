@@ -34,7 +34,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [KM_MEDIA] = LAYOUT( \
     _______,          _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,    KC_WAKE, KC_PWR,  KC_SLEP, \
     KC_ENT,  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,    _______, _______, KC_VOLU, \
-    KC_CLCK, KC_INS,  KC_HOME, KC_PGUP, KC_WBAK, KC_WFWD, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, _______, _______, _______, _______,    _______, KC_MUTE, KC_VOLD, \
+    KC_LOCK, KC_INS,  KC_HOME, KC_PGUP, KC_WBAK, KC_WFWD, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, _______, _______, _______, _______,    _______, KC_MUTE, KC_VOLD, \
     _______, KC_DEL,  KC_END,  KC_PGDN, KC_F5,   _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______,          _______,                               \
     _______, KC_PSCR, KC_SLCK, KC_PAUS, _______, _______, KC_BTN1, KC_BTN2, KC_BTN3, _______, _______, _______,          _______,             KC_MPLY,          \
     _______, _______, _______,                            KC_ESC,                             _______, _______, RESET,   _______,    KC_MPRV, KC_MSTP, KC_MNXT  \
