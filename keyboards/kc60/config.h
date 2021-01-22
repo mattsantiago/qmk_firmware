@@ -24,7 +24,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define PRODUCT_ID   0x6FFC
 #define DEVICE_VER   0x0001
 #define MANUFACTURER NPKC
-#define PRODUCT      KC60
+#define PRODUCT      KC60 (QMK)
 
 /* key matrix size */
 #define MATRIX_ROWS 5
@@ -139,3 +139,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* Bootmagic Lite key configuration */
 //#define BOOTMAGIC_LITE_ROW 0
 //#define BOOTMAGIC_LITE_COLUMN 0
+
+/* Leader key settings */
+#define LEADER_PER_KEY_TIMING
+#define LEADER_TIMEOUT 500

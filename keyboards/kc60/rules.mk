@@ -23,3 +23,6 @@ AUDIO_ENABLE = no           # Audio output
 KEYBOARD_LOCK_ENABLE = yes  # Allow locking of keyboard via magic key
 
 LAYOUTS = 60_ansi
+
+KEY_LOCK_ENABLE = yes       # Enable Key Lock via KEY_LOCK
+LEADER_ENABLE = yes			# Enable leader keys via KC_LEAD
