@@ -23,7 +23,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define PRODUCT_ID      0x6050
 #define DEVICE_VER      0x0104
 #define MANUFACTURER    Filco
-#define PRODUCT         Majestouch TKL (Pegasus Hoof 20150108)
+#define PRODUCT         Majestouch TKL (QMK/Pegasus Hoof 20150108)
 
 /* key matrix size */
 #define MATRIX_ROWS 8
