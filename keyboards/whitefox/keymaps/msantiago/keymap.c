@@ -19,7 +19,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define FN_CAPS LT(1, KC_CLCK)
 #define FN_RGUI LT(2, KC_RGUI)
 
-
+enum my_keycodes {
+  KC_WLCK = SAFE_RANGE //For locking Windows since the RGUI on the WhiteFox is used to activate the mouse keys layer
+};
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /*
@@ -68,7 +70,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [2] = LAYOUT_all(
         KC_ENT,  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, TG(2),   _______, _______,
         _______, KC_BTN1, KC_MS_U, KC_BTN2, KC_WH_U, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-        TG(2),   KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_D, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+        TG(2),   KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_D, _______, _______, _______, _______, KC_WLCK, _______, _______, _______, _______, _______,
         _______, _______, KC_WH_L, KC_BTN3, KC_WH_R, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
         _______, _______, _______,                            KC_ESC,                    _______, _______, _______, _______, _______, _______
     )
@@ -93,5 +95,17 @@ void matrix_scan_user(void) {
     SEQ_TWO_KEYS(KC_BSLS, KC_BSLS) {
       reset_keyboard();
     }
+  }
+}
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+    case KC_WLCK:
+      if (record->event.pressed) {
+        SEND_STRING(SS_RGUI("l"));
+      }
+      return false; // Skip further processing
+    default:
+      return true; // Process all other keycodes normally
   }
 }
