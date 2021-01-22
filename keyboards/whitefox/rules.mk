@@ -41,3 +41,6 @@ LAYOUTS = 65_ansi 65_ansi_blocker 65_ansi_blocker_split_bs 65_iso 65_iso_blocker
 
 # Enter lower-power sleep mode when on the ChibiOS idle thread
 OPT_DEFS += -DCORTEX_ENABLE_WFI_IDLE=TRUE
+
+KEY_LOCK_ENABLE = yes       # Enable Key Lock via KEY_LOCK
+LEADER_ENABLE = yes			# Enable leader keys via KC_LEAD
