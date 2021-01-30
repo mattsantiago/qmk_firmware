@@ -25,7 +25,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define DEVICE_VER          0x0101
 
 #define MANUFACTURER        "Massdrop Inc."
-#define PRODUCT             "CTRL Keyboard"
+#define PRODUCT             "CTRL Keyboard (QMK)"
 #define SERIAL_NUM          "Unavailable"
 
 /* key matrix size */
@@ -123,5 +123,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGB_MATRIX_KEYPRESSES
 #define RGB_MATRIX_LED_PROCESS_LIMIT 15
 #define RGB_MATRIX_LED_FLUSH_LIMIT 10
+
+/* Leader key settings */
+#define LEADER_PER_KEY_TIMING
+#define LEADER_TIMEOUT 500
 
 #include "config_led.h"
