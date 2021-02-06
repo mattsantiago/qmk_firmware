@@ -127,5 +127,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* Leader key settings */
 #define LEADER_PER_KEY_TIMING
 #define LEADER_TIMEOUT 500
+#define TAPPING_TERM 150
 
 #include "config_led.h"
