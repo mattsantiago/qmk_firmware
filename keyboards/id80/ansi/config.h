@@ -24,4 +24,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define PRODUCT_ID      0x0080
 #define DEVICE_VER      0x0001
 #define MANUFACTURER    IDOBAO
-#define PRODUCT         ID80
+#define PRODUCT         ID80 (QMK)
+
+/* Leader key settings */
+#define LEADER_PER_KEY_TIMING
+#define LEADER_TIMEOUT 500
+#define TAPPING_TERM 150
