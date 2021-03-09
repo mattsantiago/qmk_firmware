@@ -30,4 +30,7 @@ UNICODE_ENABLE = no         # Unicode
 BLUETOOTH_ENABLE = no       # Enable Bluetooth with the Adafruit EZ-Key HID
 AUDIO_ENABLE = no           # Audio output on port C6
 
+KEY_LOCK_ENABLE = yes       # Enable Key Lock via KEY_LOCK
+LEADER_ENABLE = yes			# Enable leader keys via KC_LEAD
+
 LAYOUTS = tkl_ansi tkl_iso
