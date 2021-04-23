@@ -31,3 +31,6 @@ AUDIO_ENABLE = no           # Audio output on port C6
 RGB_MATRIX_ENABLE = yes     # Use RGB matrix
 RGB_MATRIX_DRIVER = IS31FL3731
 NO_USB_STARTUP_CHECK = no   # Disable initialization only when usb is plugged in
+
+KEY_LOCK_ENABLE = yes       # Enable Key Lock via KEY_LOCK
+LEADER_ENABLE = yes			# Enable leader keys via KC_LEAD
