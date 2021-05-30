@@ -18,7 +18,10 @@
 
 #define FN_CAPS LT(4, KC_CLCK)
 #define FN_APP LT(5, KC_APP)
-#define M_WLOCK SEND_STRING(SS_RGUI("l"))
+
+enum custom_keycodes {
+    M_WLOCK = SAFE_RANGE /*Send RGUI + L for Windows lock*/
+};
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_all(
@@ -45,7 +48,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [3] = LAYOUT_all(
                                                                                                                   _______,  
   	  KC_ENT,           KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  _______,
-  	  KC_CAPS,          _______, _______, _______, _______, _______, _______, _______, _______, KC_F11,  KC_F12,  _______,
+  	  _______,          _______, _______, _______, _______, _______, _______, _______, _______, KC_F11,  KC_F12,  _______,
   	  _______, _______, _______, _______, _______, _______, _______, NK_TOGG, _______, _______, _______,          _______, 
   	  _______, _______, _______,          _______, _______,          _______,          _______, _______,          _______ ),
 
@@ -93,7 +96,17 @@ void matrix_scan_user(void) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record)
 {
-	  return true;
+    switch (keycode) {
+        case M_WLOCK:
+            if (record->event.pressed) {
+                // when keycode M_WLOCK is pressed
+                SEND_STRING(SS_RGUI("l"));
+            } else {
+                // when keycode M_WLOCK is released
+            }
+            break;
+    }
+	return true;
 }
 
 #ifdef ENCODER_ENABLE
