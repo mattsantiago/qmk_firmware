@@ -22,3 +22,6 @@ BLUETOOTH_ENABLE = no       # Enable Bluetooth
 AUDIO_ENABLE = no           # Audio output
 ENCODER_ENABLE = yes
 OLED_DRIVER_ENABLE = yes
+
+KEY_LOCK_ENABLE = yes       # Enable Key Lock via KEY_LOCK
+LEADER_ENABLE = yes			# Enable leader keys via KC_LEAD

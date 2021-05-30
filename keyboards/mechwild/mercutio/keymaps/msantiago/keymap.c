@@ -16,42 +16,85 @@
 
 #include QMK_KEYBOARD_H
 
+#define FN_CAPS LT(4, KC_CLCK)
+#define FN_APP LT(5, KC_APP)
+#define M_WLOCK SEND_STRING(SS_RGUI("l"))
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_all(
                                                                                                                   KC_MUTE,
       KC_TAB,           KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC, 
-      MO(1),            KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_QUOT, KC_ENT,
+      FN_CAPS,          KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_QUOT, KC_ENT,
       KC_LSFT, KC_SLSH, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,           KC_RSFT,
-      KC_LCTL, KC_LGUI, KC_LALT,          KC_SPC,  KC_SPC,           KC_SPC,           KC_RALT, MO(2),            KC_RCTL ),
+      KC_LCTL, KC_LGUI, KC_LALT,          KC_SPC,  OSL(3),           OSL(1),           KC_RALT, FN_APP,           KC_RCTL ),
 
   [1] = LAYOUT_all(
                                                                                                                   _______,
-  	  KC_ESC,           KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_DEL,
-  	  _______,          _______, KC_GRV,  KC_BSLS, _______, _______, _______, KC_LBRC, KC_RBRC, KC_SCLN, _______, KC_QUOT,
-  	  _______, _______, _______, _______, _______, _______, _______, _______, KC_MINS, KC_EQL,  KC_SLSH,          KC_UP, 
-  	  _______, _______, _______,          KC_HOME, _______,          KC_END,           KC_LEFT, KC_DOWN,          KC_RIGHT ),
+  	  KC_GRV,           KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSLS,
+  	  _______,          _______, _______, _______, _______, _______, _______, KC_LBRC, KC_RBRC, KC_SCLN, _______, KC_QUOT,
+  	  _______, _______, _______, _______, _______, _______, _______, KC_SLSH, KC_MINS, KC_EQL,  _______,          KC_UP, 
+  	  _______, _______, _______,          _______, _______,          TG(2),            KC_LEFT, KC_DOWN,          KC_RIGHT ),
   
   [2] = LAYOUT_all(
                                                                                                                   _______,  
-  	  _______,          KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  _______,
-  	  KC_CAPS,          _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+  	  _______,          _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+  	  _______,          _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
   	  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______, 
-  	  _______, _______, _______,          _______, _______,          _______,          _______, _______,          _______ ),
-      
-  [3] = LAYOUT_all(
-                                                                                                                  KC_TRNS,  
-  	  KC_TRNS,          KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-  	  KC_TRNS,          KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-  	  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,          KC_TRNS, 
-  	  KC_TRNS, KC_TRNS, KC_TRNS,          KC_TRNS, KC_TRNS,          KC_TRNS,          KC_TRNS, KC_TRNS,          KC_TRNS )
+  	  _______, _______, _______,          _______, _______,          TG(2),            _______, _______,          _______ ),
 
   [3] = LAYOUT_all(
                                                                                                                   _______,  
-  	  _______,          _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-  	  _______,          _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-  	  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______, 
-  	  _______, _______, _______,          _______, _______,          _______,          _______, _______,          _______ )
+  	  KC_ENT,           KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  _______,
+  	  KC_CAPS,          _______, _______, _______, _______, _______, _______, _______, _______, KC_F11,  KC_F12,  _______,
+  	  _______, _______, _______, _______, _______, _______, _______, NK_TOGG, _______, _______, _______,          _______, 
+  	  _______, _______, _______,          _______, _______,          _______,          _______, _______,          _______ ),
+
+  [4] = LAYOUT_all(
+                                                                                                                  _______,  
+  	  KC_LEAD,          KC_INS,  KC_HOME, KC_PGUP, KC_LOCK, KC_WFWD, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, _______, TG(5),
+  	  _______,          KC_DEL,  KC_END,  KC_PGDN, KC_F5,   KC_WBAK, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______,
+  	  _______, _______, KC_PSCR, KC_SLCK, KC_PAUS, _______, _______, _______, KC_BTN1, KC_BTN3, KC_BTN2,          _______, 
+  	  _______, KC_RGUI, _______,          KC_ESC,  _______,          _______,          _______, _______,          _______ ),
+
+  [5] = LAYOUT_all(
+                                                                                                                  _______,  
+  	  KC_ENT,           KC_BTN1, KC_MS_U, KC_BTN2, KC_WH_U, _______, _______, _______, _______, _______, _______, TG(5),
+  	  TG(5),            KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_D, _______, _______, _______, _______, M_WLOCK, _______, _______,
+  	  _______, _______, KC_WH_L, KC_BTN3, KC_WH_R, _______, _______, _______, _______, _______, _______,          _______, 
+  	  _______, _______, _______,          KC_ESC,  _______,          _______,          _______, _______,          _______ )
+
+//   [3] = LAYOUT_all(
+//                                                                                                                   KC_TRNS,  
+//   	  KC_TRNS,          KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+//   	  KC_TRNS,          KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+//   	  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,          KC_TRNS, 
+//   	  KC_TRNS, KC_TRNS, KC_TRNS,          KC_TRNS, KC_TRNS,          KC_TRNS,          KC_TRNS, KC_TRNS,          KC_TRNS )
 };
+
+void matrix_init_user(void)
+{
+  //user initialization
+}
+
+LEADER_EXTERNS();
+
+// Runs constantly in the background, in a loop.
+void matrix_scan_user(void) {
+    LEADER_DICTIONARY() {
+    leading = false;
+    leader_end();
+
+    /* Send leader key followed by two backslashes to reset the keyboard */
+    SEQ_TWO_KEYS(KC_BSLS, KC_BSLS) {
+      reset_keyboard();
+    }
+  }
+};
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record)
+{
+	  return true;
+}
 
 #ifdef ENCODER_ENABLE
 void encoder_update_user(uint8_t index, bool clockwise) {

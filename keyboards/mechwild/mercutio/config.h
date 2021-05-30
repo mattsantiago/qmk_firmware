@@ -54,8 +54,3 @@
 
 /* Locking resynchronize hack */
 #define LOCKING_RESYNC_ENABLE
-
-/* Leader key settings */
-#define LEADER_PER_KEY_TIMING
-#define LEADER_TIMEOUT 500
-#define TAPPING_TERM 150
