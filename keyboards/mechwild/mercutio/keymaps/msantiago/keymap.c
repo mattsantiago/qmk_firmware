@@ -18,6 +18,8 @@
 
 #define FN_CAPS LT(4, KC_CLCK)
 #define FN_APP LT(5, KC_APP)
+#define FN_FUNC LT(3, OSL(3))
+#define FN_SEC LT(1, OSL(1))
 
 enum custom_keycodes {
     M_WLOCK = SAFE_RANGE /*Send RGUI + L for Windows lock*/
@@ -27,16 +29,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_all(
                                                                                                                   KC_MUTE,
       KC_TAB,           KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC, 
-      FN_CAPS,          KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_QUOT, KC_ENT,
-      KC_LSFT, KC_SLSH, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,           KC_RSFT,
-      KC_LCTL, KC_LGUI, KC_LALT,          KC_SPC,  OSL(3),           OSL(1),           KC_RALT, FN_APP,           KC_RCTL ),
+      FN_CAPS,          KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_ENT,
+      KC_LSFT, _______, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,           KC_RSFT,
+      KC_LCTL, KC_LGUI, KC_LALT,          KC_SPC,  FN_FUNC,          FN_SEC,           KC_RALT, FN_APP,           KC_RCTL ),
 
   [1] = LAYOUT_all(
                                                                                                                   _______,
   	  KC_GRV,           KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSLS,
-  	  _______,          _______, _______, _______, _______, _______, _______, KC_LBRC, KC_RBRC, KC_SCLN, _______, KC_QUOT,
-  	  _______, _______, _______, _______, _______, _______, _______, KC_SLSH, KC_MINS, KC_EQL,  _______,          _______, 
-  	  _______, _______, _______,          _______, _______,          TG(2),            KC_LEFT, _______,          _______ ),
+  	  _______,          _______, _______, _______, _______, _______, _______, KC_SLSH, KC_LBRC, KC_RBRC, KC_QUOT, _______,
+  	  _______, _______, _______, _______, _______, _______, _______, _______, KC_MINS, KC_EQL,  _______,          _______, 
+  	  _______, _______, _______,          _______, _______,          TG(2),            _______, _______,          _______ ),
   
   [2] = LAYOUT_all(
                                                                                                                   _______,  
@@ -48,8 +50,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [3] = LAYOUT_all(
                                                                                                                   _______,  
   	  KC_ENT,           KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  _______,
-  	  _______,          _______, _______, _______, _______, _______, _______, _______, _______, KC_F11,  KC_F12,  _______,
-  	  _______, _______, _______, _______, _______, _______, _______, NK_TOGG, _______, _______, _______,          _______, 
+  	  _______,          KC_F11,  KC_F12, _______, _______, _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,  _______, _______,
+  	  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______, 
   	  _______, _______, _______,          _______, _______,          _______,          _______, _______,          _______ ),
 
   [4] = LAYOUT_all(
@@ -63,7 +65,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                                                                   _______,  
   	  KC_ENT,           KC_BTN1, KC_MS_U, KC_BTN2, KC_WH_U, _______, _______, _______, _______, _______, _______, TG(5),
   	  TG(5),            KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_D, _______, _______, _______, _______, M_WLOCK, _______, _______,
-  	  _______, _______, KC_WH_L, KC_BTN3, KC_WH_R, _______, _______, _______, _______, _______, _______,          _______, 
+  	  _______, _______, KC_WH_L, KC_BTN3, KC_WH_R, _______, _______, NK_TOGG, _______, _______, _______,          _______, 
   	  _______, _______, _______,          KC_ESC,  _______,          _______,          _______, _______,          _______ )
 
 //   [3] = LAYOUT_all(
