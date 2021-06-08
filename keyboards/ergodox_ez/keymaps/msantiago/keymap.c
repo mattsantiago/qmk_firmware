@@ -1,8 +1,8 @@
 #include QMK_KEYBOARD_H
 #include "version.h"
 
-#define FN_CAPS LT(1, KC_CLCK)
-#define FN_APP LT(2, KC_APP)
+#define FN_CAPS LT(3, KC_CLCK)
+#define FN_APP LT(4, KC_APP)
 
 enum layers {
     BASE, // default layer
@@ -17,26 +17,56 @@ enum custom_keycodes {
   VRSN = SAFE_RANGE,
 #endif
   RGB_SLD,
-  M_WLOCK /*Send RGUI + L for Windows lock*/
+  M_WLOCK, /*Send RGUI + L for Windows lock*/
+  M_BASE,
+  M_GAME,
+  M_STENO
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [0] = LAYOUT_ergodox_pretty(
   // left hand
-  KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    DF(4),       TG(3),   KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS,
+  KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    M_GAME,      TG(5),   KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS,
   KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_LBRC,     KC_RBRC, KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,
   FN_CAPS, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                          KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
   KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_ESC,      KC_EQL,  KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
-  KC_LCTL, KC_LGUI, KC_LALT, KC_LGUI, KC_LALT,                                         FN_APP,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,
+  KC_LCTL, KC_DEL,  KC_BSPC, KC_LGUI, KC_LALT,                                         FN_APP,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,
                                                KC_APP,  KC_MUTE,     KC_HOME, KC_END,
                                                         KC_VOLU,     KC_PGUP,
-                                      KC_SPC,  KC_DEL,  KC_VOLD,     KC_PGDN, KC_ENT,  KC_BSPC
+                                      KC_SPC,  KC_LCTL, KC_VOLD,     KC_PGDN, KC_ENT,  KC_BSPC
 ),
 
+/* Gaming*/
 [1] = LAYOUT_ergodox_pretty(
   // left hand
-  KC_ENT,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   DF(5),       _______, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
+  _______, _______, _______, _______, _______, _______, M_BASE,      _______, _______, _______, _______, _______, _______, _______,
+  _______, _______, _______, _______, _______, _______, _______,     _______, _______, _______, _______, _______, _______, _______,
+  _______, _______, _______, _______, _______, _______,                       _______, _______, _______, _______, _______, _______,
+  _______, _______, _______, _______, _______, _______, _______,     _______, _______, _______, _______, _______, _______, _______,
+  _______, _______, _______, _______, KC_SPC,                                          _______, _______, _______, _______, _______,
+                                               _______, _______,     _______, _______,
+                                                        _______,     _______,
+                                      KC_LCTL, KC_LALT, _______,     _______, KC_ENT,  KC_BSPC
+),
+
+
+/* Steno */
+[2] = LAYOUT_ergodox_pretty(
+  // left hand
+  _______, _______, _______, _______, _______, _______, M_BASE,      _______, _______, _______, _______, _______, _______, _______,
+  _______, _______, _______, _______, _______, _______, _______,     _______, _______, _______, _______, _______, _______, KC_LBRC,
+  _______, _______, _______, _______, _______, _______,                       _______, _______, _______, _______, _______, _______,
+  _______, _______, _______, _______, _______, _______, _______,     _______, _______, _______, _______, _______, _______, _______,
+  _______, _______, _______, _______, KC_SPC,                                          _______, _______, _______, _______, _______,
+                                               _______, _______,     _______, _______,
+                                                        _______,     _______,
+                                      KC_C,    KC_V,    _______,     _______, KC_N,    KC_M
+),
+
+[3] = LAYOUT_ergodox_pretty(
+  // left hand
+  KC_ENT,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   M_STENO,     _______, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
   KC_LEAD, KC_INS,  KC_HOME, KC_PGUP, KC_LOCK, KC_WFWD, _______,     _______, _______, _______, _______, _______, _______, KC_F12, 
   _______, KC_DEL,  KC_END,  KC_PGDN, KC_F5,   KC_WBAK,                       KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, M_WLOCK,
   _______, KC_PSCR, KC_SLCK, KC_PAUS, _______, _______, _______,     _______, _______, _______, _______, _______, _______, _______, 
@@ -44,10 +74,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
                                                _______, _______,     _______, _______,
                                                         _______,     _______,
-                                      KC_ESC,  KC_BSPC, _______,     _______, _______, _______
+                                      KC_ESC,  _______, _______,     _______, _______, _______
 ),
 
-[2] = LAYOUT_ergodox_pretty(
+[4] = LAYOUT_ergodox_pretty(
   // left hand
   KC_ENT,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   _______,     _______, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
   _______, KC_BTN1, KC_MS_U, KC_BTN2, KC_WH_U, _______, _______,     _______, _______, _______, _______, _______, _______, KC_F12, 
@@ -57,49 +87,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
                                                _______, _______,     _______, _______,
                                                         _______,     _______,
-                                      KC_ESC,  KC_BSPC, _______,     _______, _______, _______
+                                      KC_ESC,  _______, _______,     _______, _______, _______
                                       
 ),
 
-[3] = LAYOUT_ergodox_pretty(
+[5] = LAYOUT_ergodox_pretty(
   // left hand
-  _______, _______, _______, _______, _______, _______, _______,     TG(3),   _______, KC_NLCK, KC_PSLS, KC_PAST, KC_PMNS, _______, 
+  _______, _______, _______, _______, _______, _______, _______,     TG(5),   _______, KC_NLCK, KC_PSLS, KC_PAST, KC_PMNS, _______, 
   _______, _______, _______, _______, _______, _______, _______,     _______, _______, KC_P7,   KC_P8,   KC_P9,   KC_PPLS, _______, 
-  TG(3),   _______, _______, _______, _______, _______,                       _______, KC_P4,   KC_P5,   KC_P6,   KC_PPLS, _______,
+  TG(5),   _______, _______, _______, _______, _______,                       _______, KC_P4,   KC_P5,   KC_P6,   KC_PPLS, _______,
   _______, _______, _______, _______, _______, _______, _______,     _______, _______, KC_P1,   KC_P2,   KC_P3,   KC_PENT, _______, 
   _______, _______, _______, _______, _______,                                         KC_P0,   KC_P0,   KC_PDOT, KC_PENT, _______,
 
                                                _______, _______,     _______, _______,
                                                         _______,     _______,
-                                      KC_SPC,  KC_DEL,  _______,     _______, _______, _______
+                                      KC_SPC,  _______, _______,     _______, _______, _______
                                       
-),
-
-/* Gaming*/
-[4] = LAYOUT_ergodox_pretty(
-  // left hand
-  KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    DF(0),       TG(3),   KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS,
-  KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_LBRC,     KC_RBRC, KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,
-  FN_CAPS, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                          KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
-  KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_ESC,      KC_EQL,  KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
-  KC_LCTL, KC_LGUI, KC_LALT, KC_BSPC, KC_SPC,                                          FN_APP,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,
-                                               KC_APP,  KC_MUTE,     KC_HOME, KC_END,
-                                                        KC_VOLU,     KC_PGUP,
-                                      KC_LCTL, KC_LALT, KC_VOLD,     KC_PGDN, KC_ENT,  KC_BSPC
-),
-
-
-/* Steno */
-[5] = LAYOUT_ergodox_pretty(
-  // left hand
-  KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    DF(0),       TG(3),   KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS,
-  KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_LBRC,     KC_RBRC, KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC,
-  FN_CAPS, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                          KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
-  KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_ESC,      KC_EQL,  KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
-  KC_LCTL, KC_LGUI, KC_LALT, KC_BSPC, KC_SPC,                                          FN_APP,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,
-                                               KC_APP,  KC_MUTE,     KC_HOME, KC_END,
-                                                        KC_VOLU,     KC_PGUP,
-                                      KC_C,    KC_V,    KC_VOLD,     KC_PGDN, KC_N,    KC_M
 ),
 
 
@@ -273,6 +276,24 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           // when keycode M_WLOCK is released
         }
         break;
+      case M_BASE:
+        layer_state_set(0x00000001); //bitmask: layer 0 = 0001, layer 2 = 0010, layer 3 = 0100, etc.
+        // layer_on(0);
+        // layer_off(1);
+        // layer_off(2);
+        break;
+      case M_GAME:
+        layer_state_set(0x00000003);
+        // layer_on(0);
+        // layer_on(1);
+        // layer_off(2);
+        break;
+      case M_STENO:
+        layer_state_set(0x00000007);
+        // layer_on(0);
+        // layer_on(1);
+        // layer_on(2);
+        break;
       case VRSN:
         SEND_STRING (QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION);
         return false;
@@ -291,6 +312,8 @@ void keyboard_post_init_user(void) {
 #ifdef RGBLIGHT_COLOR_LAYER_0
   rgblight_setrgb(RGBLIGHT_COLOR_LAYER_0);
 #endif
+  layer_off(1);
+  layer_off(2);
 };
 
 // Runs whenever there is a layer state change.
