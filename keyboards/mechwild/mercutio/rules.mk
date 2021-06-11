@@ -26,3 +26,4 @@ OLED_DRIVER_ENABLE = yes
 KEY_LOCK_ENABLE = yes       # Enable Key Lock via KEY_LOCK
 LEADER_ENABLE = yes			# Enable leader keys via KC_LEAD
 WPM_ENABLE = yes			# Enable WPM calculation for Bongo Cat
+#TAP_DANCE_ENABLE = yes

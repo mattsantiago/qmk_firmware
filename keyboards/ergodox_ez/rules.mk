@@ -45,6 +45,3 @@ LAYOUTS = ergodox
 # Disable unsupported hardware
 AUDIO_SUPPORTED = no
 BACKLIGHT_SUPPORTED = no
-
-KEY_LOCK_ENABLE = yes       # Enable Key Lock via KEY_LOCK
-LEADER_ENABLE = yes			# Enable leader keys via KC_LEAD

@@ -158,8 +158,3 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define NO_ACTION_MACRO
 #define NO_ACTION_FUNCTION
 //#define DEBUG_MATRIX_SCAN_RATE
-
-/* Leader key settings */
-#define LEADER_PER_KEY_TIMING
-#define LEADER_TIMEOUT 500
-//#define TAPPING_TERM 150
