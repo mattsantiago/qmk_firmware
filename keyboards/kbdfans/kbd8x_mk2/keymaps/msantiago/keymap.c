@@ -18,6 +18,10 @@
 #define FN_CAPS LT(1, KC_CLCK)
 #define FN_APP LT(2, KC_APP)
 
+enum custom_keycodes {
+    M_WOO = SAFE_RANGE,
+};
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT( /* Base */
     
@@ -43,7 +47,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	KC_ENT,  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, TG(2),   _______,          _______, _______, _______, \
 	_______, KC_BTN1, KC_MS_U, KC_BTN2, KC_WH_U, _______, _______, _______, _______, _______, _______, _______, _______,          _______,          _______, _______, _______, \
 	TG(2),   KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_D, _______, _______, _______, _______, _______, _______, _______,                   _______,                                     \
-	_______, _______, KC_WH_L, KC_BTN3, KC_WH_R, _______, _______, _______, _______, _______, _______, _______,          _______, _______,                   _______,          \
+	_______, _______, KC_WH_L, KC_BTN3, KC_WH_R, _______, _______, _______, _______, _______, _______, M_WOO,            _______, _______,                   _______,          \
 	_______, _______, _______,                            KC_ESC,                                      _______, _______, _______, _______,          _______, _______, _______  \
   ),
   [3] = LAYOUT( 
@@ -70,6 +74,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+	switch (keycode) {
+    case M_WOO:
+        if (record->event.pressed) {
+            SEND_STRING("!clap\n");
+        }
+        break;
+    }
+    return true;
   return true;
 }
 
