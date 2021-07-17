@@ -38,9 +38,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [1] = LAYOUT_all(
                                                                                                                   _______,
-  	  KC_GRV,           KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______,
-  	  TG(1),            _______, _______, _______, _______, _______, KC_BSLS, KC_SLSH, KC_LBRC, KC_RBRC, KC_QUOT, KC_QUOT,
-  	  _______, _______, _______, _______, _______, _______, _______, _______, KC_MINS, KC_EQL,  _______,          _______, 
+  	  KC_GRV,           KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_QUES,
+  	  TG(1),            KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_SLSH,
+  	  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______, 
   	  _______, _______, _______,          _______, _______,          TG(1),            _______, _______,          _______ ),
   
   [2] = LAYOUT_all(
@@ -52,9 +52,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [3] = LAYOUT_all(
                                                                                                                   _______,  
-  	  KC_LEAD,          KC_INS,  KC_HOME, KC_PGUP, KC_LOCK, KC_WFWD, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, _______, TG(4),
-  	  _______,          KC_DEL,  KC_END,  KC_PGDN, KC_F5,   KC_WBAK, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______,
-  	  _______, _______, KC_PSCR, KC_SLCK, KC_PAUS, _______, _______, _______, KC_BTN1, KC_BTN3, KC_BTN2,          _______, 
+  	  KC_LEAD,          KC_INS,  KC_HOME, KC_PGUP, KC_LOCK, KC_WFWD, _______, KC_MINS, KC_PLUS, KC_LBRC, KC_RBRC, KC_PIPE,
+  	  _______,          KC_DEL,  KC_END,  KC_PGDN, KC_F5,   KC_WBAK, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_QUOT, KC_DQUO,
+  	  _______, _______, KC_PSCR, KC_SLCK, KC_PAUS, _______, _______, KC_UNDS, KC_EQL,  KC_LCBR, KC_RCBR,          KC_BSLS, 
   	  _______, KC_RGUI, _______,          KC_ESC,  TG(2),            TG(1),            _______, _______,          _______ ),
 
   [4] = LAYOUT_all(
@@ -108,7 +108,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
 }
 
 #ifdef ENCODER_ENABLE
-void encoder_update_user(uint8_t index, bool clockwise) {
+bool encoder_update_user(uint8_t index, bool clockwise) {
     switch (index) {
         case 0:
             if (clockwise) {
@@ -118,6 +118,7 @@ void encoder_update_user(uint8_t index, bool clockwise) {
             }
         break;
     }
+    return true;
 }
 #endif
 
