@@ -50,11 +50,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, _______, _______, _______, KC_SPC,                                          _______, _______, _______, _______, _______,
                                                _______, _______,     _______, _______,
                                                         _______,     _______,
-<<<<<<< HEAD
-                                      KC_LCTL, KC_LALT, _______,     _______, KC_DEL,  KC_BSPC
-=======
                                       KC_LCTL, KC_LALT, _______,     _______, _______, _______
->>>>>>> keymaps_working
 ),
 
 
